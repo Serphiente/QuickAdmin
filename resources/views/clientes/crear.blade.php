@@ -9,16 +9,16 @@ $rut = (string)print_r($json['Listado']['0']['Comprador']['RutUnidad'],true);
 $dv = $rest = substr($rut, -1);
 $rut=substr($rut, 0, -2);
 $rut= str_replace(".","",$rut);
-$registro_flag = false;
+$registro_flag = 0;
  foreach($idxs as $idx){
     if($idx == $rut){
-      $registro_flag = true;
+       $registro_flag = 1;
     }
 }
 
 @endphp
 @section('content')
-@if($registro_flag = false)
+@if($registro_flag == 0)
     <h3 class="page-title">@lang('quickadmin.cliente.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['clientes.store']]) !!}
 
@@ -114,8 +114,17 @@ $registro_flag = false;
                 <div class="col-xs-12 form-group">
     <div class="page-title">¡El cliente  
     <br>{{print_r($json['Listado']['0']['Comprador']['NombreOrganismo'],true)}} 
+    <br>{{print_r($json['Listado']['0']['Comprador']['RutUnidad'],true)}} 
+    <br>{{$rut}}
+    <br>{{$idx}}
     <br>ya se encuentra registrado!</div>
-    <input type="button" class="btn btn-primary" value="Volver">
+    <input type="button" autofocus class="btn btn-primary" value="Volver" id="btn_buscar_oc">
+
+    <script type="text/javascript">
+                    document.getElementById("btn_buscar_oc").onclick = function () {
+                        location.href = "/clientes/create";
+                    };
+                </script>
     </div>
     </div>
     </div>
