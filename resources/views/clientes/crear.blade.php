@@ -1,37 +1,37 @@
 @extends('layouts.app')
+@php
+$idxs = DB::table('clientes')->pluck('rut');
+$codigo = print_r($json['Listado']['0']['Codigo'],true);
+$pos = strpos($codigo, "-");
+$codigo = substr($codigo, 0, $pos);
 
+$rut = (string)print_r($json['Listado']['0']['Comprador']['RutUnidad'],true);
+$dv = $rest = substr($rut, -1);
+$rut=substr($rut, 0, -2);
+$rut= str_replace(".","",$rut);
+$registro_flag = false;
+ foreach($idxs as $idx){
+    if($idx == $rut){
+      $registro_flag = true;
+    }
+}
+
+@endphp
 @section('content')
+@if($registro_flag = false)
     <h3 class="page-title">@lang('quickadmin.cliente.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['clientes.store']]) !!}
-     <div class="panel-body">
- <div class="row">
-            <div class="col-xs-12 form-group">
-                <label for="busquedaoc">Búsqueda por OC</label>
-                 <input id="input_oc" class="form-control" placeholder="" name="busquedaoc" type="text">
-                 <br>
-                                
-                 <input id="btn_buscar_oc" class="btn btn-primary" type="button" value="Buscar">
-                  <script type="text/javascript">
-                    document.getElementById("btn_buscar_oc").onclick = function () {
-                        location.href = "/clientes/create/"+document.getElementById("input_oc").value;
-                    };
-                </script>
-            </div>
-        </div>
-        </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_create')
         </div>
-        
+
         <div class="panel-body">
-
-       
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('rut', 'Rut*', ['class' => 'control-label']) !!}
-                    {!! Form::text('rut', old('rut'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('rut', $rut, ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('rut'))
                         <p class="help-block">
@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('dv', 'Dígito Verificador*', ['class' => 'control-label']) !!}
-                    {!! Form::text('dv', old('dv'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('dv', $dv, ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('dv'))
                         <p class="help-block">
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('nombre', 'Nombre*', ['class' => 'control-label']) !!}
-                    {!! Form::text('nombre', old('nombre'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('nombre', print_r($json['Listado']['0']['Comprador']['NombreOrganismo'],true), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('nombre'))
                         <p class="help-block">
@@ -67,7 +67,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('direccion_factura', 'Dirección factura', ['class' => 'control-label']) !!}
-                    {!! Form::text('direccion_factura', old('direccion_factura'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('direccion_factura', print_r($json['Listado']['0']['Comprador']['DireccionUnidad'],true), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('direccion_factura'))
                         <p class="help-block">
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('direccion_despacho', 'Direccion despacho', ['class' => 'control-label']) !!}
-                    {!! Form::text('direccion_despacho', old('direccion_despacho'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::text('direccion_despacho', print_r($json['Listado']['0']['Comprador']['DireccionUnidad'],true), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('direccion_despacho'))
                         <p class="help-block">
@@ -106,5 +106,20 @@
 
     {!! Form::submit(trans('quickadmin.qa_save'), ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
-@stop
 
+
+@else
+<div class="panel-body">
+<div class="row">
+                <div class="col-xs-12 form-group">
+    <div class="page-title">¡El cliente  
+    <br>{{print_r($json['Listado']['0']['Comprador']['NombreOrganismo'],true)}} 
+    <br>ya se encuentra registrado!</div>
+    <input type="button" class="btn btn-primary" value="Volver">
+    </div>
+    </div>
+    </div>
+    
+@endif
+
+@stop

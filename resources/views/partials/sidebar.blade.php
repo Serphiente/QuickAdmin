@@ -132,16 +132,6 @@
                         </a>
                     </li>
                 @endcan
-                @can('region_access')
-                <li class="{{ $request->segment(1) == 'regions' ? 'active active-sub' : '' }}">
-                        <a href="{{ route('regions.index') }}">
-                            <i class="fa fa-gears"></i>
-                            <span class="title">
-                                @lang('quickadmin.region.title')
-                            </span>
-                        </a>
-                    </li>
-                @endcan
                 @can('provincium_access')
                 <li class="{{ $request->segment(1) == 'provincias' ? 'active active-sub' : '' }}">
                         <a href="{{ route('provincias.index') }}">
@@ -152,6 +142,17 @@
                         </a>
                     </li>
                 @endcan
+                @can('region_access')
+                <li class="{{ $request->segment(1) == 'regions' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('regions.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">
+                                @lang('quickadmin.region.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                
                 </ul>
             </li>
             @endcan

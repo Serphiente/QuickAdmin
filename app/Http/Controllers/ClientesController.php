@@ -36,10 +36,33 @@ class ClientesController extends Controller
             return abort(401);
         }
         $relations = [
-            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Necesario seleccionar', ''),
         ];
 
         return view('clientes.create', $relations);
+    }
+
+    /**
+     * Show the form for creating new Cliente.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function crear($idoc)
+    {
+        if (! Gate::allows('cliente_create')) {
+            return abort(401);
+        }
+        $ticket="0E1DFD13-C558-47B7-9E29-A07D8632FCC0";
+        $consulta="http://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=".$idoc."&ticket=".$ticket;
+         $ocs = file_get_contents($consulta);
+         $json = json_decode($ocs, true);
+        
+        $relations = [
+            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Necesario seleccionar', ''),
+            'json' => $json,
+        ];
+
+        return view('clientes.crear', $relations);
     }
 
     /**
@@ -71,7 +94,7 @@ class ClientesController extends Controller
             return abort(401);
         }
         $relations = [
-            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Necesario seleccionar', ''),
         ];
 
         $cliente = Cliente::findOrFail($id);
@@ -110,7 +133,7 @@ class ClientesController extends Controller
             return abort(401);
         }
         $relations = [
-            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Necesario seleccionar', ''),
             'facturas' => \App\Factura::where('cliente_id', $id)->get(),
             'contacto_clientes' => \App\ContactoCliente::where('cliente_id', $id)->get(),
         ];
