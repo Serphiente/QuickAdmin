@@ -33,6 +33,10 @@
                             <td>{{ $producto->presentacion->nombre or '' }}</td>
                         </tr>
                         <tr>
+                            <th>@lang('quickadmin.producto.fields.unidad-envase')</th>
+                            <td>{{ $producto->unidad_envase }}</td>
+                        </tr>
+                        <tr>
                             <th>@lang('quickadmin.producto.fields.modo-uso')</th>
                             <td>{{ $producto->modo_uso->uso or '' }}</td>
                         </tr>

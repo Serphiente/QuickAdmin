@@ -13,40 +13,15 @@
             </li>
 
             
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_management_access')): ?>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.user-management.title'); ?></span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('factura_access')): ?>
+            <li class="<?php echo e($request->segment(1) == 'facturas' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('facturas.index')); ?>">
+                    <i class="fa fa-gears"></i>
+                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.facturas.title'); ?></span>
                 </a>
-                <ul class="treeview-menu">
-                
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_access')): ?>
-                <li class="<?php echo e($request->segment(1) == 'users' ? 'active active-sub' : ''); ?>">
-                        <a href="<?php echo e(route('users.index')); ?>">
-                            <i class="fa fa-user"></i>
-                            <span class="title">
-                                <?php echo app('translator')->getFromJson('quickadmin.users.title'); ?>
-                            </span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role_access')): ?>
-                <li class="<?php echo e($request->segment(1) == 'roles' ? 'active active-sub' : ''); ?>">
-                        <a href="<?php echo e(route('roles.index')); ?>">
-                            <i class="fa fa-briefcase"></i>
-                            <span class="title">
-                                <?php echo app('translator')->getFromJson('quickadmin.roles.title'); ?>
-                            </span>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                </ul>
             </li>
             <?php endif; ?>
+            
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('administración_general_access')): ?>
             <li class="treeview">
                 <a href="#">
@@ -111,6 +86,40 @@
                 </ul>
             </li>
             <?php endif; ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_management_access')): ?>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.user-management.title'); ?></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('user_access')): ?>
+                <li class="<?php echo e($request->segment(1) == 'users' ? 'active active-sub' : ''); ?>">
+                        <a href="<?php echo e(route('users.index')); ?>">
+                            <i class="fa fa-user"></i>
+                            <span class="title">
+                                <?php echo app('translator')->getFromJson('quickadmin.users.title'); ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('role_access')): ?>
+                <li class="<?php echo e($request->segment(1) == 'roles' ? 'active active-sub' : ''); ?>">
+                        <a href="<?php echo e(route('roles.index')); ?>">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="title">
+                                <?php echo app('translator')->getFromJson('quickadmin.roles.title'); ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                </ul>
+            </li>
+            <?php endif; ?>
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('regiones,_provincias_y_comuna_access')): ?>
             <li class="treeview">
                 <a href="#">
@@ -132,16 +141,6 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('provincium_access')): ?>
-                <li class="<?php echo e($request->segment(1) == 'provincias' ? 'active active-sub' : ''); ?>">
-                        <a href="<?php echo e(route('provincias.index')); ?>">
-                            <i class="fa fa-gears"></i>
-                            <span class="title">
-                                <?php echo app('translator')->getFromJson('quickadmin.provincia.title'); ?>
-                            </span>
-                        </a>
-                    </li>
-                <?php endif; ?>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('region_access')): ?>
                 <li class="<?php echo e($request->segment(1) == 'regions' ? 'active active-sub' : ''); ?>">
                         <a href="<?php echo e(route('regions.index')); ?>">
@@ -152,7 +151,16 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                
+                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('provincium_access')): ?>
+                <li class="<?php echo e($request->segment(1) == 'provincias' ? 'active active-sub' : ''); ?>">
+                        <a href="<?php echo e(route('provincias.index')); ?>">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">
+                                <?php echo app('translator')->getFromJson('quickadmin.provincia.title'); ?>
+                            </span>
+                        </a>
+                    </li>
+                <?php endif; ?>
                 </ul>
             </li>
             <?php endif; ?>
@@ -200,15 +208,6 @@
                 </ul>
             </li>
             <?php endif; ?>
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('factura_access')): ?>
-            <li class="<?php echo e($request->segment(1) == 'facturas' ? 'active' : ''); ?>">
-                <a href="<?php echo e(route('facturas.index')); ?>">
-                    <i class="fa fa-gears"></i>
-                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.facturas.title'); ?></span>
-                </a>
-            </li>
-            <?php endif; ?>
-            
 
             
 

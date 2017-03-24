@@ -13,40 +13,15 @@
             </li>
 
             
-            @can('user_management_access')
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span class="title">@lang('quickadmin.user-management.title')</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            @can('factura_access')
+            <li class="{{ $request->segment(1) == 'facturas' ? 'active' : '' }}">
+                <a href="{{ route('facturas.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.facturas.title')</span>
                 </a>
-                <ul class="treeview-menu">
-                
-                @can('user_access')
-                <li class="{{ $request->segment(1) == 'users' ? 'active active-sub' : '' }}">
-                        <a href="{{ route('users.index') }}">
-                            <i class="fa fa-user"></i>
-                            <span class="title">
-                                @lang('quickadmin.users.title')
-                            </span>
-                        </a>
-                    </li>
-                @endcan
-                @can('role_access')
-                <li class="{{ $request->segment(1) == 'roles' ? 'active active-sub' : '' }}">
-                        <a href="{{ route('roles.index') }}">
-                            <i class="fa fa-briefcase"></i>
-                            <span class="title">
-                                @lang('quickadmin.roles.title')
-                            </span>
-                        </a>
-                    </li>
-                @endcan
-                </ul>
             </li>
             @endcan
+            
             @can('administración_general_access')
             <li class="treeview">
                 <a href="#">
@@ -111,6 +86,40 @@
                 </ul>
             </li>
             @endcan
+            @can('user_management_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span class="title">@lang('quickadmin.user-management.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                
+                @can('user_access')
+                <li class="{{ $request->segment(1) == 'users' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('users.index') }}">
+                            <i class="fa fa-user"></i>
+                            <span class="title">
+                                @lang('quickadmin.users.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                @can('role_access')
+                <li class="{{ $request->segment(1) == 'roles' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('roles.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="title">
+                                @lang('quickadmin.roles.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
+                </ul>
+            </li>
+            @endcan
             @can('regiones,_provincias_y_comuna_access')
             <li class="treeview">
                 <a href="#">
@@ -132,16 +141,6 @@
                         </a>
                     </li>
                 @endcan
-                @can('provincium_access')
-                <li class="{{ $request->segment(1) == 'provincias' ? 'active active-sub' : '' }}">
-                        <a href="{{ route('provincias.index') }}">
-                            <i class="fa fa-gears"></i>
-                            <span class="title">
-                                @lang('quickadmin.provincia.title')
-                            </span>
-                        </a>
-                    </li>
-                @endcan
                 @can('region_access')
                 <li class="{{ $request->segment(1) == 'regions' ? 'active active-sub' : '' }}">
                         <a href="{{ route('regions.index') }}">
@@ -152,7 +151,16 @@
                         </a>
                     </li>
                 @endcan
-                
+                @can('provincium_access')
+                <li class="{{ $request->segment(1) == 'provincias' ? 'active active-sub' : '' }}">
+                        <a href="{{ route('provincias.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span class="title">
+                                @lang('quickadmin.provincia.title')
+                            </span>
+                        </a>
+                    </li>
+                @endcan
                 </ul>
             </li>
             @endcan
@@ -200,15 +208,6 @@
                 </ul>
             </li>
             @endcan
-            @can('factura_access')
-            <li class="{{ $request->segment(1) == 'facturas' ? 'active' : '' }}">
-                <a href="{{ route('facturas.index') }}">
-                    <i class="fa fa-gears"></i>
-                    <span class="title">@lang('quickadmin.facturas.title')</span>
-                </a>
-            </li>
-            @endcan
-            
 
             
 

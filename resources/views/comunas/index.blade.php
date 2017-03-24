@@ -23,7 +23,6 @@
 
                         <th>@lang('quickadmin.comuna.fields.nombre')</th>
                         <th>@lang('quickadmin.comuna.fields.provincia')</th>
-                        <th>@lang('quickadmin.comuna.fields.region')</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -38,7 +37,6 @@
 
                                 <td>{{ $comuna->nombre }}</td>
                                 <td>{{ $comuna->provincia->nombre or '' }}</td>
-                                <td>{{$comuna->provincia->region->ordinal}} - {{ $comuna->provincia->region->nombre or '' }}</td>
                                 <td>
                                     @can('comuna_view')
                                     <a href="{{ route('comunas.show',[$comuna->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>

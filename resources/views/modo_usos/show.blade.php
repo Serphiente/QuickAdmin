@@ -36,6 +36,7 @@
                         <th>@lang('quickadmin.producto.fields.precio-bodega')</th>
                         <th>@lang('quickadmin.producto.fields.laboratorio')</th>
                         <th>@lang('quickadmin.producto.fields.presentacion')</th>
+                        <th>@lang('quickadmin.producto.fields.unidad-envase')</th>
                         <th>@lang('quickadmin.producto.fields.modo-uso')</th>
                         <th>&nbsp;</th>
         </tr>
@@ -50,6 +51,7 @@
                                 <td>{{ $producto->precio_bodega }}</td>
                                 <td>{{ $producto->laboratorio->nombre or '' }}</td>
                                 <td>{{ $producto->presentacion->nombre or '' }}</td>
+                                <td>{{ $producto->unidad_envase }}</td>
                                 <td>{{ $producto->modo_uso->uso or '' }}</td>
                                 <td>
                                     @can('producto_view')
@@ -72,7 +74,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="10">@lang('quickadmin.qa_no_entries_in_table')</td>
+                <td colspan="11">@lang('quickadmin.qa_no_entries_in_table')</td>
             </tr>
         @endif
     </tbody>

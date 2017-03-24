@@ -86,6 +86,21 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    <?php echo Form::label('unidad_envase', 'Unidad envase', ['class' => 'control-label']); ?>
+
+                    <?php echo Form::number('unidad_envase', old('unidad_envase'), ['class' => 'form-control', 'placeholder' => '']); ?>
+
+                    <p class="help-block"></p>
+                    <?php if($errors->has('unidad_envase')): ?>
+                        <p class="help-block">
+                            <?php echo e($errors->first('unidad_envase')); ?>
+
+                        </p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     <?php echo Form::label('modo_uso_id', 'Modo de Uso', ['class' => 'control-label']); ?>
 
                     <?php echo Form::select('modo_uso_id', $modo_usos, old('modo_uso_id'), ['class' => 'form-control select2']); ?>

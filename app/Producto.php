@@ -13,13 +13,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property decimal $precio_bodega
  * @property string $laboratorio
  * @property string $presentacion
+ * @property integer $unidad_envase
  * @property string $modo_uso
 */
 class Producto extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nombre', 'concentracion', 'precio_bodega', 'laboratorio_id', 'presentacion_id', 'modo_uso_id'];
+    protected $fillable = ['nombre', 'concentracion', 'precio_bodega', 'unidad_envase', 'laboratorio_id', 'presentacion_id', 'modo_uso_id'];
     
 
     /**
@@ -47,6 +48,15 @@ class Producto extends Model
     public function setPresentacionIdAttribute($input)
     {
         $this->attributes['presentacion_id'] = $input ? $input : null;
+    }
+
+    /**
+     * Set attribute to money format
+     * @param $input
+     */
+    public function setUnidadEnvaseAttribute($input)
+    {
+        $this->attributes['unidad_envase'] = $input ? $input : null;
     }
 
     /**

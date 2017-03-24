@@ -3,31 +3,13 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.cliente.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['clientes.store']]) !!}
-     <div class="panel-body">
- <div class="row">
-            <div class="col-xs-12 form-group">
-                <label for="busquedaoc">Búsqueda por OC</label>
-                 <input id="input_oc" class="form-control" placeholder="" name="busquedaoc" type="text">
-                 <br>
-                                
-                 <input id="btn_buscar_oc" class="btn btn-primary" type="button" value="Buscar">
-                  <script type="text/javascript">
-                    document.getElementById("btn_buscar_oc").onclick = function () {
-                        location.href = "/clientes/create/"+document.getElementById("input_oc").value;
-                    };
-                </script>
-            </div>
-        </div>
-        </div>
+
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_create')
         </div>
         
         <div class="panel-body">
-
-       
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('rut', 'Rut*', ['class' => 'control-label']) !!}

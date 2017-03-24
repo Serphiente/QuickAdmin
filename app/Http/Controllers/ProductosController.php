@@ -36,9 +36,9 @@ class ProductosController extends Controller
             return abort(401);
         }
         $relations = [
-            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Selección ogligatoria', ''),
+            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Please select', ''),
         ];
 
         return view('productos.create', $relations);
@@ -73,9 +73,9 @@ class ProductosController extends Controller
             return abort(401);
         }
         $relations = [
-            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Selección ogligatoria', ''),
+            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Please select', ''),
         ];
 
         $producto = Producto::findOrFail($id);
@@ -114,9 +114,9 @@ class ProductosController extends Controller
             return abort(401);
         }
         $relations = [
-            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Selección ogligatoria', ''),
-            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Selección opcional', ''),
+            'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Please select', ''),
             'facturas' => \App\Factura::where('producto_id', $id)->get(),
         ];
 

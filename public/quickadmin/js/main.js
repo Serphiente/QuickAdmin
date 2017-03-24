@@ -16,12 +16,11 @@ $(document).ready(function () {
         retrieve: true,
         dom: 'lBfrtip<"actions">',
         columnDefs: [],
-        "iDisplayLength": 10,
+        "iDisplayLength": 100,
         "aaSorting": [],
         buttons: [
             {
                 extend: 'copy',
-                text: 'Copiar',
                 exportOptions: {
                     columns: ':visible',
                     format: {
@@ -29,7 +28,15 @@ $(document).ready(function () {
                     }
                 }
             },
-          
+            {
+                extend: 'csv',
+                exportOptions: {
+                    columns: ':visible',
+                    format: {
+                        body: handleCheckboxes
+                    }
+                }
+            },
             {
                 extend: 'excel',
                 exportOptions: {
@@ -40,7 +47,7 @@ $(document).ready(function () {
                 }
             },
             {
-                extend: 'pdfHtml5',
+                extend: 'pdf',
                 exportOptions: {
                     columns: ':visible',
                     format: {
@@ -50,7 +57,6 @@ $(document).ready(function () {
             },
             {
                 extend: 'print',
-                text: 'Imprimir',
                 exportOptions: {
                     columns: ':visible',
                     format: {

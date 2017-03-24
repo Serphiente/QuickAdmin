@@ -24,6 +24,7 @@
                         <th><?php echo app('translator')->getFromJson('quickadmin.producto.fields.precio-bodega'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.producto.fields.laboratorio'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.producto.fields.presentacion'); ?></th>
+                        <th><?php echo app('translator')->getFromJson('quickadmin.producto.fields.unidad-envase'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.producto.fields.modo-uso'); ?></th>
                         <th>&nbsp;</th>
                     </tr>
@@ -42,6 +43,7 @@
                                 <td><?php echo e($producto->precio_bodega); ?></td>
                                 <td><?php echo e(isset($producto->laboratorio->nombre) ? $producto->laboratorio->nombre : ''); ?></td>
                                 <td><?php echo e(isset($producto->presentacion->nombre) ? $producto->presentacion->nombre : ''); ?></td>
+                                <td><?php echo e($producto->unidad_envase); ?></td>
                                 <td><?php echo e(isset($producto->modo_uso->uso) ? $producto->modo_uso->uso : ''); ?></td>
                                 <td>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('producto_view')): ?>
@@ -67,7 +69,7 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="10"><?php echo app('translator')->getFromJson('quickadmin.qa_no_entries_in_table'); ?></td>
+                            <td colspan="11"><?php echo app('translator')->getFromJson('quickadmin.qa_no_entries_in_table'); ?></td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

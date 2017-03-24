@@ -37,9 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('clientes', 'ClientesController');
     Route::post('clientes_mass_destroy', ['uses' => 'ClientesController@massDestroy', 'as' => 'clientes.mass_destroy']);
     Route::resource('contacto_clientes', 'ContactoClientesController');
-
-    Route::get('clientes/create/{idoc}', 'ClientesController@crear');
-
     Route::post('contacto_clientes_mass_destroy', ['uses' => 'ContactoClientesController@massDestroy', 'as' => 'contacto_clientes.mass_destroy']);
     Route::resource('proveedors', 'ProveedorsController');
     Route::post('proveedors_mass_destroy', ['uses' => 'ProveedorsController@massDestroy', 'as' => 'proveedors.mass_destroy']);
