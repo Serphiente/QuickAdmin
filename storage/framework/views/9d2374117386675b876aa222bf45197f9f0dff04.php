@@ -208,6 +208,33 @@
                 </ul>
             </li>
             <?php endif; ?>
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('proveedoroc_access')): ?>
+            <li class="<?php echo e($request->segment(1) == 'proveedorocs' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('proveedorocs.index')); ?>">
+                    <i class="fa fa-gears"></i>
+                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.proveedoroc.title'); ?></span>
+                </a>
+            </li>
+            <?php endif; ?>
+            
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('itemsoc_access')): ?>
+            <li class="<?php echo e($request->segment(1) == 'itemsocs' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('itemsocs.index')); ?>">
+                    <i class="fa fa-gears"></i>
+                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.itemsoc.title'); ?></span>
+                </a>
+            </li>
+            <?php endif; ?>
+            
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('recepcionmercaderium_access')): ?>
+            <li class="<?php echo e($request->segment(1) == 'recepcionmercaderias' ? 'active' : ''); ?>">
+                <a href="<?php echo e(route('recepcionmercaderias.index')); ?>">
+                    <i class="fa fa-gears"></i>
+                    <span class="title"><?php echo app('translator')->getFromJson('quickadmin.recepcionmercaderia.title'); ?></span>
+                </a>
+            </li>
+            <?php endif; ?>
+            
 
             
 

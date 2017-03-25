@@ -52,4 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('productos_mass_destroy', ['uses' => 'ProductosController@massDestroy', 'as' => 'productos.mass_destroy']);
     Route::resource('facturas', 'FacturasController');
     Route::post('facturas_mass_destroy', ['uses' => 'FacturasController@massDestroy', 'as' => 'facturas.mass_destroy']);
+    Route::resource('proveedorocs', 'ProveedorocsController');
+    Route::post('proveedorocs_mass_destroy', ['uses' => 'ProveedorocsController@massDestroy', 'as' => 'proveedorocs.mass_destroy']);
+    Route::resource('itemsocs', 'ItemsocsController');
+    Route::post('itemsocs_mass_destroy', ['uses' => 'ItemsocsController@massDestroy', 'as' => 'itemsocs.mass_destroy']);
+    Route::resource('recepcionmercaderias', 'RecepcionmercaderiasController');
+    Route::post('recepcionmercaderias_mass_destroy', ['uses' => 'RecepcionmercaderiasController@massDestroy', 'as' => 'recepcionmercaderias.mass_destroy']);
 });

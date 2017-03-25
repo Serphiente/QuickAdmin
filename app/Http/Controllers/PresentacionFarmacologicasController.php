@@ -102,6 +102,7 @@ class PresentacionFarmacologicasController extends Controller
             return abort(401);
         }
         $relations = [
+            'itemsocs' => \App\Itemsoc::where('presentancion_id', $id)->get(),
             'productos' => \App\Producto::where('presentacion_id', $id)->get(),
         ];
 

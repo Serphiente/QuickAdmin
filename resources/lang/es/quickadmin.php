@@ -19,6 +19,9 @@ return [
 		'presentacion-farmacologica' => [		'title' => 'Presentación Farmacológica',		'created_at' => 'Time',		'fields' => [			'nombre' => 'Nombre',			'nombre-corto' => 'Nombre corto',		],	],
 		'producto' => [		'title' => 'Producto',		'created_at' => 'Time',		'fields' => [			'nombre' => 'Nombre',			'concentracion' => 'Concentración',			'precio-bodega' => 'Precio bodega',			'laboratorio' => 'Laboratorio',			'presentacion' => 'Presentación Farmacológica',			'unidad-envase' => 'Unidad envase',			'modo-uso' => 'Modo de Uso',		],	],
 		'facturas' => [		'title' => 'Facturas',		'created_at' => 'Time',		'fields' => [			'folio' => 'Folio',			'vendedor' => 'Vendedor',			'fecha' => 'Fecha',			'cliente' => 'Cliente',			'producto' => 'Producto',			'cantidad' => 'Cantidad',			'precio' => 'Precio',			'condicion-pago' => 'Condición de Pago',			'estado-pago' => '¿Pagado?',			'documento-valido' => 'Documento válido',		],	],
+		'proveedoroc' => [		'title' => 'Datos OC',		'created_at' => 'Time',		'fields' => [			'folio' => 'Folio',			'proveedor' => 'Proveedor',			'fecha' => 'Fecha',			'observaciones' => 'Observaciones',		],	],
+		'itemsoc' => [		'title' => 'Items OC',		'created_at' => 'Time',		'fields' => [			'folio' => 'Folio',			'producto' => 'Producto',			'presentancion' => 'Presentanción',			'cantidad' => 'Cantidad',			'precio-unidad' => 'Precio unidad',			'observaciones' => 'Observaciones',		],	],
+		'recepcionmercaderia' => [		'title' => 'Recepción mercadería',		'created_at' => 'Time',		'fields' => [			'proveedor' => '# OC',			'fecha' => 'Fecha',			'producto' => 'Producto',			'lote' => 'Lote',			'fecha-vencimiento' => 'Fecha vencimiento',			'cantidad' => 'Cantidad',		],	],
 	'qa_create' => 'Crear',
 	'qa_save' => 'Guardar',
 	'qa_edit' => 'Editar',

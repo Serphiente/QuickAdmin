@@ -45,13 +45,61 @@
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     
-<li role="presentation" class="active"><a href="#contactoproveedor" aria-controls="contactoproveedor" role="tab" data-toggle="tab">Contacto proveedor</a></li>
+<li role="presentation" class="active"><a href="#proveedoroc" aria-controls="proveedoroc" role="tab" data-toggle="tab">Proveedoroc</a></li>
+<li role="presentation" class=""><a href="#contactoproveedor" aria-controls="contactoproveedor" role="tab" data-toggle="tab">Contacto proveedor</a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
     
-<div role="tabpanel" class="tab-pane active" id="contactoproveedor">
+<div role="tabpanel" class="tab-pane active" id="proveedoroc">
+<table class="table table-bordered table-striped {{ count($proveedorocs) > 0 ? 'datatable' : '' }}">
+    <thead>
+        <tr>
+            <th>@lang('quickadmin.proveedoroc.fields.folio')</th>
+                        <th>@lang('quickadmin.proveedoroc.fields.proveedor')</th>
+                        <th>@lang('quickadmin.proveedoroc.fields.fecha')</th>
+                        <th>@lang('quickadmin.proveedoroc.fields.observaciones')</th>
+                        <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (count($proveedorocs) > 0)
+            @foreach ($proveedorocs as $proveedoroc)
+                <tr data-entry-id="{{ $proveedoroc->id }}">
+                    <td>{{ $proveedoroc->folio }}</td>
+                                <td>{{ $proveedoroc->proveedor->nombre or '' }}</td>
+                                <td>{{ $proveedoroc->fecha }}</td>
+                                <td>{!! $proveedoroc->observaciones !!}</td>
+                                <td>
+                                    @can('proveedoroc_view')
+                                    <a href="{{ route('proveedorocs.show',[$proveedoroc->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
+                                    @endcan
+                                    @can('proveedoroc_edit')
+                                    <a href="{{ route('proveedorocs.edit',[$proveedoroc->id]) }}" class="btn btn-xs btn-info">@lang('quickadmin.qa_edit')</a>
+                                    @endcan
+                                    @can('proveedoroc_delete')
+                                    {!! Form::open(array(
+                                        'style' => 'display: inline-block;',
+                                        'method' => 'DELETE',
+                                        'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                        'route' => ['proveedorocs.destroy', $proveedoroc->id])) !!}
+                                    {!! Form::submit(trans('quickadmin.qa_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                    {!! Form::close() !!}
+                                    @endcan
+                                </td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="8">@lang('quickadmin.qa_no_entries_in_table')</td>
+            </tr>
+        @endif
+    </tbody>
+</table>
+</div>
+<div role="tabpanel" class="tab-pane " id="contactoproveedor">
 <table class="table table-bordered table-striped {{ count($contacto_proveedors) > 0 ? 'datatable' : '' }}">
     <thead>
         <tr>

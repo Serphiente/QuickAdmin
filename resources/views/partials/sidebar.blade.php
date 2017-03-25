@@ -208,6 +208,33 @@
                 </ul>
             </li>
             @endcan
+            @can('proveedoroc_access')
+            <li class="{{ $request->segment(1) == 'proveedorocs' ? 'active' : '' }}">
+                <a href="{{ route('proveedorocs.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.proveedoroc.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('itemsoc_access')
+            <li class="{{ $request->segment(1) == 'itemsocs' ? 'active' : '' }}">
+                <a href="{{ route('itemsocs.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.itemsoc.title')</span>
+                </a>
+            </li>
+            @endcan
+            
+            @can('recepcionmercaderium_access')
+            <li class="{{ $request->segment(1) == 'recepcionmercaderias' ? 'active' : '' }}">
+                <a href="{{ route('recepcionmercaderias.index') }}">
+                    <i class="fa fa-gears"></i>
+                    <span class="title">@lang('quickadmin.recepcionmercaderia.title')</span>
+                </a>
+            </li>
+            @endcan
+            
 
             
 

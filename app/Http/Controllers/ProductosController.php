@@ -117,6 +117,8 @@ class ProductosController extends Controller
             'laboratorios' => \App\Laboratorio::get()->pluck('nombre', 'id')->prepend('Please select', ''),
             'presentacions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Please select', ''),
             'modo_usos' => \App\ModoUso::get()->pluck('uso', 'id')->prepend('Please select', ''),
+            'itemsocs' => \App\Itemsoc::where('producto_id', $id)->get(),
+            'recepcionmercaderia' => \App\Recepcionmercaderium::where('producto_id', $id)->get(),
             'facturas' => \App\Factura::where('producto_id', $id)->get(),
         ];
 

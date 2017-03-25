@@ -111,6 +111,7 @@ class ProveedorsController extends Controller
         }
         $relations = [
             'comunas' => \App\Comuna::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'proveedorocs' => \App\Proveedoroc::where('proveedor_id', $id)->get(),
             'contacto_proveedors' => \App\ContactoProveedor::where('proveedor_id', $id)->get(),
         ];
 
