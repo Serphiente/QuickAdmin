@@ -218,13 +218,14 @@
             @endcan
             
             @can('itemsoc_access')
-            <li class="{{ $request->segment(1) == 'itemsocs' ? 'active' : '' }}">
+           <!-- <li class="{{ $request->segment(1) == 'itemsocs' ? 'active' : '' }}">
                 <a href="{{ route('itemsocs.index') }}">
                     <i class="fa fa-gears"></i>
                     <span class="title">@lang('quickadmin.itemsoc.title')</span>
                 </a>
             </li>
             @endcan
+            -->
             
             @can('recepcionmercaderium_access')
             <li class="{{ $request->segment(1) == 'recepcionmercaderias' ? 'active' : '' }}">
@@ -241,7 +242,7 @@
             <li class="{{ $request->segment(1) == 'change_password' ? 'active' : '' }}">
                 <a href="{{ route('auth.change_password') }}">
                     <i class="fa fa-key"></i>
-                    <span class="title">Change password</span>
+                    <span class="title">Cambiar Contraseña</span>
                 </a>
             </li>
 

@@ -43,6 +43,20 @@ class ItemsocsController extends Controller
 
         return view('itemsocs.create', $relations);
     }
+    public function agregarConID($id)
+    {
+       if (! Gate::allows('itemsoc_create')) {
+            return abort(401);
+        }
+        $relations = [
+            'folios' => \App\Proveedoroc::get()->pluck('folio', 'id')->prepend('Please select', ''),
+            'productos' => \App\Producto::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'presentancions' => \App\PresentacionFarmacologica::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'id'=>$id,
+        ];
+
+        return view('itemsocs.create', $relations);
+    }
 
     /**
      * Store a newly created Itemsoc in storage.

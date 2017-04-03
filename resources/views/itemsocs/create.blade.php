@@ -4,6 +4,8 @@
     <h3 class="page-title">@lang('quickadmin.itemsoc.title')</h3>
     {!! Form::open(['method' => 'POST', 'route' => ['itemsocs.store']]) !!}
 
+@php echo '<h1> '.$id.' </h1>';@endphp
+
     <div class="panel panel-default">
         <div class="panel-heading">
             @lang('quickadmin.qa_create')
@@ -12,7 +14,24 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('folio_id', 'Folio*', ['class' => 'control-label']) !!}
+                    {!! Form::label('folio_id', 'Folio OC', ['class' => 'control-label']) !!}
+                    
+@php 
+    $folios = DB::table('proveedorocs')->get()->pluck('folio');  
+@endphp
+                    <select class="form-control select2 select2-hidden-accessible" name="users_id">
+
+                        @foreach($folios as $folio)
+                        @if((true))
+                           <option value="{{$folio}}">{{$folio}}</option>
+                        @else
+                            <option value="{{$folio}}">2</option>
+                        @endif
+                        @endforeach
+
+</select>
+
+
                     {!! Form::select('folio_id', $folios, old('folio_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('folio_id'))

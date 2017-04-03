@@ -118,6 +118,7 @@ class ProveedorocsController extends Controller
         $proveedoroc = Proveedoroc::findOrFail($id);
 
         return view('proveedorocs.show', compact('proveedoroc') + $relations);
+        //return $relations;
     }
 
 

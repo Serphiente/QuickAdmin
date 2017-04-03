@@ -33,8 +33,8 @@
             </div><!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     
-<li role="presentation" class="active"><a href="#itemsoc" aria-controls="itemsoc" role="tab" data-toggle="tab">Itemsoc</a></li>
-<li role="presentation" class=""><a href="#recepcionmercaderia" aria-controls="recepcionmercaderia" role="tab" data-toggle="tab">Recepcionmercaderia</a></li>
+<li role="presentation" class="active"><a href="#itemsoc" aria-controls="itemsoc" role="tab" data-toggle="tab">Items</a></li>
+<li role="presentation" class=""><a href="#recepcionmercaderia" aria-controls="recepcionmercaderia" role="tab" data-toggle="tab">Recepción Mercadería</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -45,12 +45,12 @@
     <thead>
         <tr>
             <th>@lang('quickadmin.itemsoc.fields.folio')</th>
-                        <th>@lang('quickadmin.itemsoc.fields.producto')</th>
-                        <th>@lang('quickadmin.itemsoc.fields.presentancion')</th>
-                        <th>@lang('quickadmin.itemsoc.fields.cantidad')</th>
-                        <th>@lang('quickadmin.itemsoc.fields.precio-unidad')</th>
-                        <th>@lang('quickadmin.itemsoc.fields.observaciones')</th>
-                        <th>&nbsp;</th>
+            <th>@lang('quickadmin.itemsoc.fields.producto')</th>
+            <th>@lang('quickadmin.itemsoc.fields.presentancion')</th>
+            <th>@lang('quickadmin.itemsoc.fields.cantidad')</th>
+            <th>@lang('quickadmin.itemsoc.fields.precio-unidad')</th>
+            <th>@lang('quickadmin.itemsoc.fields.observaciones')</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
 
@@ -83,16 +83,20 @@
                                 </td>
                 </tr>
             @endforeach
+            <br>
+            <a href="{{ route('itemsocs.create') }}/{{ $proveedoroc->folio }}"><button class="btn btn-primary">Agregar Item</button> </a>
+            <br><br>
         @else
             <tr>
                 <td colspan="10">@lang('quickadmin.qa_no_entries_in_table')</td>
             </tr>
+            
         @endif
     </tbody>
 </table>
 </div>
 <div role="tabpanel" class="tab-pane " id="recepcionmercaderia">
-<table class="table table-bordered table-striped {{ count($recepcionmercaderias) > 0 ? 'datatable' : '' }}">
+<table class="table table-bordered table-striped {{ count($recepcionmercaderia) > 0 ? 'datatable' : '' }}">
     <thead>
         <tr>
             <th>@lang('quickadmin.recepcionmercaderia.fields.proveedor')</th>
@@ -106,8 +110,8 @@
     </thead>
 
     <tbody>
-        @if (count($recepcionmercaderias) > 0)
-            @foreach ($recepcionmercaderias as $recepcionmercaderia)
+        @if (count($recepcionmercaderia) > 0)
+            @foreach ($recepcionmercaderia as $recepcionmercaderia)
                 <tr data-entry-id="{{ $recepcionmercaderia->id }}">
                     <td>{{ $recepcionmercaderia->proveedor->folio or '' }}</td>
                                 <td>{{ $recepcionmercaderia->fecha }}</td>

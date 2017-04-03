@@ -218,13 +218,14 @@
             <?php endif; ?>
             
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('itemsoc_access')): ?>
-            <li class="<?php echo e($request->segment(1) == 'itemsocs' ? 'active' : ''); ?>">
+           <!-- <li class="<?php echo e($request->segment(1) == 'itemsocs' ? 'active' : ''); ?>">
                 <a href="<?php echo e(route('itemsocs.index')); ?>">
                     <i class="fa fa-gears"></i>
                     <span class="title"><?php echo app('translator')->getFromJson('quickadmin.itemsoc.title'); ?></span>
                 </a>
             </li>
             <?php endif; ?>
+            -->
             
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('recepcionmercaderium_access')): ?>
             <li class="<?php echo e($request->segment(1) == 'recepcionmercaderias' ? 'active' : ''); ?>">
@@ -241,7 +242,7 @@
             <li class="<?php echo e($request->segment(1) == 'change_password' ? 'active' : ''); ?>">
                 <a href="<?php echo e(route('auth.change_password')); ?>">
                     <i class="fa fa-key"></i>
-                    <span class="title">Change password</span>
+                    <span class="title">Cambiar Contraseña</span>
                 </a>
             </li>
 
