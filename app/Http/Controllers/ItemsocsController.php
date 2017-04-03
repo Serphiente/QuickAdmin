@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Itemsoc;
+use App\Proveedoroc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreItemsocsRequest;
@@ -70,8 +71,8 @@ class ItemsocsController extends Controller
             return abort(401);
         }
         $itemsoc = Itemsoc::create($request->all());
+        return redirect('proveedorocs/' . $itemsoc->folio_id);
 
-        return redirect()->route('itemsocs.index');
     }
 
 

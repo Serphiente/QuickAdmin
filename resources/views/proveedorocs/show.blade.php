@@ -55,6 +55,9 @@
     </thead>
 
     <tbody>
+     <br>
+            <a href="{{ route('itemsocs.create') }}/{{ $proveedoroc->folio }}"><button class="btn btn-primary">Agregar Item</button> </a>
+            <br><br>
         @if (count($itemsocs) > 0)
             @foreach ($itemsocs as $itemsoc)
                 <tr data-entry-id="{{ $itemsoc->id }}">
@@ -83,9 +86,7 @@
                                 </td>
                 </tr>
             @endforeach
-            <br>
-            <a href="{{ route('itemsocs.create') }}/{{ $proveedoroc->folio }}"><button class="btn btn-primary">Agregar Item</button> </a>
-            <br><br>
+           
         @else
             <tr>
                 <td colspan="10">@lang('quickadmin.qa_no_entries_in_table')</td>

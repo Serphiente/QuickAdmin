@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.recepcionmercaderia.title')</h3>
     
-    {!! Form::model($recepcionmercaderia, ['method' => 'PUT', 'route' => ['recepcionmercaderias.update', $recepcionmercaderia->id]]) !!}
+    {!! Form::model($recepcionmercaderium, ['method' => 'PUT', 'route' => ['recepcionmercaderias.update', $recepcionmercaderium->id]]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">

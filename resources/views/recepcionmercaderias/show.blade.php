@@ -14,27 +14,27 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.proveedor')</th>
-                            <td>{{ $recepcionmercaderia->proveedor->folio or '' }}</td>
+                            <td>{{ $recepcionmercaderium->proveedor->folio or '' }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.fecha')</th>
-                            <td>{{ $recepcionmercaderia->fecha }}</td>
+                            <td>{{ $recepcionmercaderium->fecha }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.producto')</th>
-                            <td>{{ $recepcionmercaderia->producto->nombre or '' }}</td>
+                            <td>{{ $recepcionmercaderium->producto->nombre or '' }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.lote')</th>
-                            <td>{{ $recepcionmercaderia->lote }}</td>
+                            <td>{{ $recepcionmercaderium->lote }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.fecha-vencimiento')</th>
-                            <td>{{ $recepcionmercaderia->fecha_vencimiento }}</td>
+                            <td>{{ $recepcionmercaderium->fecha_vencimiento }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.cantidad')</th>
-                            <td>{{ $recepcionmercaderia->cantidad }}</td>
+                            <td>{{ $recepcionmercaderium->cantidad }}</td>
                         </tr>
                     </table>
                 </div>
