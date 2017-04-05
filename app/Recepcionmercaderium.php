@@ -15,12 +15,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $lote
  * @property string $fecha_vencimiento
  * @property integer $cantidad
+ * @property integer $precio_compra
 */
 class Recepcionmercaderium extends Model
 {
     use SoftDeletes;
     protected $table ="recepcionmercaderias";
-    protected $fillable = ['fecha', 'lote', 'fecha_vencimiento', 'cantidad', 'proveedor_id', 'producto_id'];
+    protected $fillable = ['fecha', 'lote', 'fecha_vencimiento', 'cantidad', 'precio_compra', 'proveedor_id', 'producto_id'];
     
 
     /**
@@ -78,6 +79,15 @@ class Recepcionmercaderium extends Model
     public function setCantidadAttribute($input)
     {
         $this->attributes['cantidad'] = $input ? $input : null;
+    }
+
+    /**
+     * Set attribute to money format
+     * @param $input
+     */
+    public function setPrecioCompraAttribute($input)
+    {
+        $this->attributes['precio_compra'] = $input ? $input : null;
     }
     
     public function proveedor()

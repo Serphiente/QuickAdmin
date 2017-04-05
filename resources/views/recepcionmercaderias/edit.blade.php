@@ -3,7 +3,7 @@
 @section('content')
     <h3 class="page-title">@lang('quickadmin.recepcionmercaderia.title')</h3>
     
-    {!! Form::model($recepcionmercaderium, ['method' => 'PUT', 'route' => ['recepcionmercaderias.update', $recepcionmercaderium->id]]) !!}
+    {!! Form::model($recepcionmercaderia, ['method' => 'PUT', 'route' => ['recepcionmercaderias.update', $recepcionmercaderia->id]]) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -79,6 +79,18 @@
                     @if($errors->has('cantidad'))
                         <p class="help-block">
                             {{ $errors->first('cantidad') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('precio_compra', 'Precio compra', ['class' => 'control-label']) !!}
+                    {!! Form::number('precio_compra', old('precio_compra'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('precio_compra'))
+                        <p class="help-block">
+                            {{ $errors->first('precio_compra') }}
                         </p>
                     @endif
                 </div>

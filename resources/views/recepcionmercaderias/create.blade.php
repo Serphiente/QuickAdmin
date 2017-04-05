@@ -10,14 +10,8 @@
         </div>
         
         <div class="panel-body">
-        @php
-echo "<pre>";
-($products = DB::table('productos')->get());
-echo "</pre>";
-@endphp
             <div class="row">
                 <div class="col-xs-12 form-group">
-                
                     {!! Form::label('proveedor_id', '# OC', ['class' => 'control-label']) !!}
                     {!! Form::select('proveedor_id', $proveedors, old('proveedor_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
@@ -40,10 +34,24 @@ echo "</pre>";
                     @endif
                 </div>
             </div>
+
+            <pre>
+            @php 
+               $products= DB::select('select p.id, p.nombre, p.concentracion, pf.nombre_corto, p.unidad_envase from productos p, presentacion_farmacologicas pf where p.presentacion_id = pf.id order by p.nombre');            
+               $productosArray = array();
+               foreach($products as $p)
+               {
+                     $productosArray[$p->id] = ucwords($p->nombre)." ".ucwords($p->concentracion . " Caja x " . $p->unidad_envase . " " . $p->nombre_corto);
+               }
+            @endphp
+
+            </pre>
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('producto_id', 'Producto', ['class' => 'control-label']) !!}
-                    {!! Form::select('producto_id', $productos, old('producto_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::select('producto_id', $productosArray, old('producto_id'), ['class' => 'form-control select2']) !!}
+                   
                     <p class="help-block"></p>
                     @if($errors->has('producto_id'))
                         <p class="help-block">
@@ -84,6 +92,18 @@ echo "</pre>";
                     @if($errors->has('cantidad'))
                         <p class="help-block">
                             {{ $errors->first('cantidad') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('precio_compra', 'Precio compra', ['class' => 'control-label']) !!}
+                    {!! Form::number('precio_compra', old('precio_compra'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('precio_compra'))
+                        <p class="help-block">
+                            {{ $errors->first('precio_compra') }}
                         </p>
                     @endif
                 </div>

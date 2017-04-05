@@ -14,27 +14,31 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.proveedor')</th>
-                            <td>{{ $recepcionmercaderium->proveedor->folio or '' }}</td>
+                            <td>{{ $recepcionmercaderia->proveedor->folio or '' }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.fecha')</th>
-                            <td>{{ $recepcionmercaderium->fecha }}</td>
+                            <td>{{ $recepcionmercaderia->fecha }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.producto')</th>
-                            <td>{{ $recepcionmercaderium->producto->nombre or '' }}</td>
+                            <td>{{ $recepcionmercaderia->producto->nombre or '' }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.lote')</th>
-                            <td>{{ $recepcionmercaderium->lote }}</td>
+                            <td>{{ $recepcionmercaderia->lote }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.fecha-vencimiento')</th>
-                            <td>{{ $recepcionmercaderium->fecha_vencimiento }}</td>
+                            <td>{{ $recepcionmercaderia->fecha_vencimiento }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.recepcionmercaderia.fields.cantidad')</th>
-                            <td>{{ $recepcionmercaderium->cantidad }}</td>
+                            <td>{{ $recepcionmercaderia->cantidad }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('quickadmin.recepcionmercaderia.fields.precio-compra')</th>
+                            <td>{{ $recepcionmercaderia->precio_compra }}</td>
                         </tr>
                     </table>
                 </div>
