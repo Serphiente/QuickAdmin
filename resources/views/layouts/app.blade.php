@@ -1,8 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     @include('partials.head')
+    <style>
+    .ucfirst > option{
+        text-transform: capitalize !important;
+        height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+    }
+    </style>
 </head>
 
 

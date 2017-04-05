@@ -10,11 +10,14 @@
         </div>
         
         <div class="panel-body">
+        @php
+echo "<pre>";
+($products = DB::table('productos')->get());
+echo "</pre>";
+@endphp
             <div class="row">
                 <div class="col-xs-12 form-group">
-                <pre>
-                {{print_r($proveedors)}}
-                </pre>
+                
                     {!! Form::label('proveedor_id', '# OC', ['class' => 'control-label']) !!}
                     {!! Form::select('proveedor_id', $proveedors, old('proveedor_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>

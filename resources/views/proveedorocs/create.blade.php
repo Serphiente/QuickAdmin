@@ -12,8 +12,11 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('folio', 'Folio*', ['class' => 'control-label']) !!}
-                    {!! Form::number('folio', old('folio'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                @php
+                $last_id = DB::table('proveedorocs')->max('id');
+                @endphp
+                    {!! Form::label('folio', 'Orden de Compra #', ['class' => 'control-label']) !!}
+                    {!! Form::number('folio', $last_id+1, ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('folio'))
                         <p class="help-block">
@@ -25,7 +28,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('proveedor_id', 'Proveedor*', ['class' => 'control-label']) !!}
-                    {!! Form::select('proveedor_id', $proveedors, old('proveedor_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::select('proveedor_id', $proveedors, old('proveedor_id'), ['class' => 'form-control select2 ucfirst']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('proveedor_id'))
                         <p class="help-block">

@@ -15,6 +15,10 @@ $registro_flag = 0;
        $registro_flag = 1;
     }
 }
+(string)print_r($json['Listado']['0']['Comprador']['ComunaUnidad'],true);
+$id_comuna = DB::table('comunas')->where('nombre', 'like', (string)print_r($json['Listado']['0']['Comprador']['ComunaUnidad'],true))->pluck('id');
+$id_comuna = substr($id_comuna,1);
+$id_comuna = substr($id_comuna,0,-1);
 
 @endphp
 @section('content')
@@ -40,6 +44,7 @@ $registro_flag = 0;
                     @endif
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('dv', 'Dígito Verificador*', ['class' => 'control-label']) !!}
@@ -91,7 +96,8 @@ $registro_flag = 0;
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('comuna_id', 'Comuna*', ['class' => 'control-label']) !!}
-                    {!! Form::select('comuna_id', $comunas, old('comuna_id'), ['class' => 'form-control select2']) !!}
+
+                    {!! Form::select('comuna_id', $comunas, $id_comuna, ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('comuna_id'))
                         <p class="help-block">

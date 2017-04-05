@@ -25,6 +25,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('itemsocs/create/{id}','ItemsocsController@agregarConID');
+    Route::get('clientes/create/{id}','ClientesController@crear');
 
     Route::get('/home', 'HomeController@index');
     Route::resource('roles', 'RolesController');
