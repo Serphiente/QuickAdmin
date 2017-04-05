@@ -21,7 +21,6 @@
 
                         <th><?php echo app('translator')->getFromJson('quickadmin.comuna.fields.nombre'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.comuna.fields.provincia'); ?></th>
-                        <th><?php echo app('translator')->getFromJson('quickadmin.comuna.fields.region'); ?></th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -36,7 +35,6 @@
 
                                 <td><?php echo e($comuna->nombre); ?></td>
                                 <td><?php echo e(isset($comuna->provincia->nombre) ? $comuna->provincia->nombre : ''); ?></td>
-                                <td><?php echo e($comuna->provincia->region->ordinal); ?> - <?php echo e(isset($comuna->provincia->region->nombre) ? $comuna->provincia->region->nombre : ''); ?></td>
                                 <td>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('comuna_view')): ?>
                                     <a href="<?php echo e(route('comunas.show',[$comuna->id])); ?>" class="btn btn-xs btn-primary"><?php echo app('translator')->getFromJson('quickadmin.qa_view'); ?></a>

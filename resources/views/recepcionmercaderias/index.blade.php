@@ -42,7 +42,7 @@
 
                                 <td>{{ $recepcionmercaderia->proveedor->folio or '' }}</td>
                                 <td>{{ $recepcionmercaderia->fecha }}</td>
-                                <td>{{ ucwords($recepcionmercaderia->producto->nombre . " " . $recepcionmercaderia->producto->concentracion). " caja x " . $recepcionmercaderia->producto->unidad_envase . " " . $recepcionmercaderia->producto->nombre_corto}}</td>
+                                <td>{{ ucwords($recepcionmercaderia->producto->nombre . " " . $recepcionmercaderia->producto->concentracion). " Caja x " . $recepcionmercaderia->producto->unidad_envase . " " . $recepcionmercaderia->producto->nombre_corto}}</td>
                                 <td>{{ $recepcionmercaderia->lote }}</td>
                                 <td>{{ $recepcionmercaderia->fecha_vencimiento }}</td>
                                 <td>{{ $recepcionmercaderia->cantidad }}</td>
