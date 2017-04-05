@@ -16,7 +16,7 @@ $(document).ready(function () {
         retrieve: true,
         dom: 'lBfrtip<"actions">',
         columnDefs: [],
-        "iDisplayLength": 100,
+        "iDisplayLength": 10,
         "aaSorting": [],
         buttons: [
             {
@@ -28,15 +28,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            {
-                extend: 'csv',
-                exportOptions: {
-                    columns: ':visible',
-                    format: {
-                        body: handleCheckboxes
-                    }
-                }
-            },
+            
             {
                 extend: 'excel',
                 exportOptions: {
@@ -47,7 +39,7 @@ $(document).ready(function () {
                 }
             },
             {
-                extend: 'pdf',
+                extend: 'pdfHtml5',
                 exportOptions: {
                     columns: ':visible',
                     format: {
@@ -57,6 +49,7 @@ $(document).ready(function () {
             },
             {
                 extend: 'print',
+                text: 'Imprimir',
                 exportOptions: {
                     columns: ':visible',
                     format: {

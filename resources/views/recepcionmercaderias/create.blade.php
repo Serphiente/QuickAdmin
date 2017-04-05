@@ -10,6 +10,7 @@
         </div>
         
         <div class="panel-body">
+
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('proveedor_id', '# OC', ['class' => 'control-label']) !!}
@@ -34,23 +35,10 @@
                     @endif
                 </div>
             </div>
-
-            <pre>
-            @php 
-               $products= DB::select('select p.id, p.nombre, p.concentracion, pf.nombre_corto, p.unidad_envase from productos p, presentacion_farmacologicas pf where p.presentacion_id = pf.id order by p.nombre');            
-               $productosArray = array();
-               foreach($products as $p)
-               {
-                     $productosArray[$p->id] = ucwords($p->nombre)." ".ucwords($p->concentracion . " Caja x " . $p->unidad_envase . " " . $p->nombre_corto);
-               }
-            @endphp
-
-            </pre>
-
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('producto_id', 'Producto', ['class' => 'control-label']) !!}
-                    {!! Form::select('producto_id', $productosArray, old('producto_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::select('producto_id', $productos, old('producto_id'), ['class' => 'form-control select2']) !!}
                    
                     <p class="help-block"></p>
                     @if($errors->has('producto_id'))

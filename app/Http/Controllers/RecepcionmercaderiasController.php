@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Recepcionmercaderium;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -35,9 +35,21 @@ class RecepcionmercaderiasController extends Controller
         if (! Gate::allows('recepcionmercaderium_create')) {
             return abort(401);
         }
+        $productos = DB::select('select p.id, p.nombre, p.concentracion, pf.nombre_corto, p.unidad_envase from productos p, presentacion_farmacologicas pf where p.presentacion_id = pf.id order by p.nombre');
+        $productos_array = array();
+        foreach($productos as $p){
+            $productos_array[$p->id] = ucwords($p->nombre)." ".ucwords($p->concentracion . " Caja x " . $p->unidad_envase . " " . $p->nombre_corto);
+        }
+
+        $ordenes_compra = DB::select('select oc.id, oc.folio, p.nombre, oc.fecha from proveedorocs oc, proveedors p where oc.proveedor_id = p.id order by oc.fecha desc');
+        $ocs_array = array();
+        foreach($ordenes_compra as $oc){
+            $ocs_array[$oc->id] = "# " . $oc->folio . " - " . ucwords($oc->nombre) . " " . $oc->fecha;
+        }
+
         $relations = [
-            'proveedors' => \App\Proveedoroc::get()->pluck('folio', 'id')->prepend('Please select', ''),
-            'productos' => \App\Producto::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'proveedors' => $ocs_array,
+            'productos' => $productos_array,
         ];
 
         return view('recepcionmercaderias.create', $relations);
