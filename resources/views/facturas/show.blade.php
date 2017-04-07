@@ -29,16 +29,8 @@
                             <td>{{ $factura->cliente->nombre or '' }}</td>
                         </tr>
                         <tr>
-                            <th>@lang('quickadmin.facturas.fields.producto')</th>
-                            <td>{{ $factura->producto->nombre or '' }}</td>
-                        </tr>
-                        <tr>
-                            <th>@lang('quickadmin.facturas.fields.cantidad')</th>
-                            <td>{{ $factura->cantidad }}</td>
-                        </tr>
-                        <tr>
-                            <th>@lang('quickadmin.facturas.fields.precio')</th>
-                            <td>{{ $factura->precio }}</td>
+                            <th>@lang('quickadmin.facturas.fields.orden-compra')</th>
+                            <td>{{ $factura->orden_compra }}</td>
                         </tr>
                         <tr>
                             <th>@lang('quickadmin.facturas.fields.condicion-pago')</th>

@@ -61,36 +61,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('producto_id', 'Producto', ['class' => 'control-label']) !!}
-                    {!! Form::select('producto_id', $productos, old('producto_id'), ['class' => 'form-control select2']) !!}
+                    {!! Form::label('orden_compra', 'Orden de Compra', ['class' => 'control-label']) !!}
+                    {!! Form::text('orden_compra', old('orden_compra'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('producto_id'))
+                    @if($errors->has('orden_compra'))
                         <p class="help-block">
-                            {{ $errors->first('producto_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('cantidad', 'Cantidad*', ['class' => 'control-label']) !!}
-                    {!! Form::number('cantidad', old('cantidad'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('cantidad'))
-                        <p class="help-block">
-                            {{ $errors->first('cantidad') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('precio', 'Precio*', ['class' => 'control-label']) !!}
-                    {!! Form::text('precio', old('precio'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('precio'))
-                        <p class="help-block">
-                            {{ $errors->first('precio') }}
+                            {{ $errors->first('orden_compra') }}
                         </p>
                     @endif
                 </div>

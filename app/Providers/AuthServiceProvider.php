@@ -271,7 +271,7 @@ class AuthServiceProvider extends ServiceProvider
 
         // Auth gates for: Facturas
         Gate::define('factura_access', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 3, 4, 5]);
         });
         Gate::define('factura_create', function ($user) {
             return in_array($user->role_id, [1]);
@@ -280,7 +280,7 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->role_id, [1]);
         });
         Gate::define('factura_view', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 3, 4, 5]);
         });
         Gate::define('factura_delete', function ($user) {
             return in_array($user->role_id, [1]);
@@ -322,19 +322,19 @@ class AuthServiceProvider extends ServiceProvider
 
         // Auth gates for: Recepcionmercaderia
         Gate::define('recepcionmercaderium_access', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 5]);
         });
         Gate::define('recepcionmercaderium_create', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 5]);
         });
         Gate::define('recepcionmercaderium_edit', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 5]);
         });
         Gate::define('recepcionmercaderium_view', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 5]);
         });
         Gate::define('recepcionmercaderium_delete', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [1, 5]);
         });
 
     }

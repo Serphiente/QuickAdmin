@@ -71,44 +71,14 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    <?php echo Form::label('producto_id', 'Producto', ['class' => 'control-label']); ?>
+                    <?php echo Form::label('orden_compra', 'Orden de Compra', ['class' => 'control-label']); ?>
 
-                    <?php echo Form::select('producto_id', $productos, old('producto_id'), ['class' => 'form-control select2']); ?>
-
-                    <p class="help-block"></p>
-                    <?php if($errors->has('producto_id')): ?>
-                        <p class="help-block">
-                            <?php echo e($errors->first('producto_id')); ?>
-
-                        </p>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <?php echo Form::label('cantidad', 'Cantidad*', ['class' => 'control-label']); ?>
-
-                    <?php echo Form::number('cantidad', old('cantidad'), ['class' => 'form-control', 'placeholder' => '']); ?>
+                    <?php echo Form::text('orden_compra', old('orden_compra'), ['class' => 'form-control', 'placeholder' => '']); ?>
 
                     <p class="help-block"></p>
-                    <?php if($errors->has('cantidad')): ?>
+                    <?php if($errors->has('orden_compra')): ?>
                         <p class="help-block">
-                            <?php echo e($errors->first('cantidad')); ?>
-
-                        </p>
-                    <?php endif; ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    <?php echo Form::label('precio', 'Precio*', ['class' => 'control-label']); ?>
-
-                    <?php echo Form::text('precio', old('precio'), ['class' => 'form-control', 'placeholder' => '']); ?>
-
-                    <p class="help-block"></p>
-                    <?php if($errors->has('precio')): ?>
-                        <p class="help-block">
-                            <?php echo e($errors->first('precio')); ?>
+                            <?php echo e($errors->first('orden_compra')); ?>
 
                         </p>
                     <?php endif; ?>
@@ -135,7 +105,7 @@
 
                     <?php echo Form::hidden('estado_pago', 0); ?>
 
-                    <?php echo Form::checkbox('estado_pago', 1, true); ?>
+                    <?php echo Form::checkbox('estado_pago', 1, false); ?>
 
                     <p class="help-block"></p>
                     <?php if($errors->has('estado_pago')): ?>

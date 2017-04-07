@@ -114,6 +114,7 @@
                         <th>@lang('quickadmin.recepcionmercaderia.fields.lote')</th>
                         <th>@lang('quickadmin.recepcionmercaderia.fields.fecha-vencimiento')</th>
                         <th>@lang('quickadmin.recepcionmercaderia.fields.cantidad')</th>
+                        <th>@lang('quickadmin.recepcionmercaderia.fields.precio-compra')</th>
                         <th>&nbsp;</th>
         </tr>
     </thead>
@@ -128,6 +129,7 @@
                                 <td>{{ $recepcionmercaderia->lote }}</td>
                                 <td>{{ $recepcionmercaderia->fecha_vencimiento }}</td>
                                 <td>{{ $recepcionmercaderia->cantidad }}</td>
+                                <td>{{ $recepcionmercaderia->precio_compra }}</td>
                                 <td>
                                     @can('recepcionmercaderium_view')
                                     <a href="{{ route('recepcionmercaderias.show',[$recepcionmercaderia->id]) }}" class="btn btn-xs btn-primary">@lang('quickadmin.qa_view')</a>
@@ -149,7 +151,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="10">@lang('quickadmin.qa_no_entries_in_table')</td>
+                <td colspan="11">@lang('quickadmin.qa_no_entries_in_table')</td>
             </tr>
         @endif
     </tbody>

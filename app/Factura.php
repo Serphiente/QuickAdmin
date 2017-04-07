@@ -13,9 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $vendedor
  * @property string $fecha
  * @property string $cliente
- * @property string $producto
- * @property integer $cantidad
- * @property decimal $precio
+ * @property string $orden_compra
  * @property integer $condicion_pago
  * @property tinyInteger $estado_pago
  * @property tinyInteger $documento_valido
@@ -24,7 +22,7 @@ class Factura extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['folio', 'fecha', 'cantidad', 'precio', 'condicion_pago', 'estado_pago', 'documento_valido', 'vendedor_id', 'cliente_id', 'producto_id'];
+    protected $fillable = ['folio', 'fecha', 'orden_compra', 'condicion_pago', 'estado_pago', 'documento_valido', 'vendedor_id', 'cliente_id'];
     
 
     /**
@@ -85,33 +83,6 @@ class Factura extends Model
     }
 
     /**
-     * Set to null if empty
-     * @param $input
-     */
-    public function setProductoIdAttribute($input)
-    {
-        $this->attributes['producto_id'] = $input ? $input : null;
-    }
-
-    /**
-     * Set attribute to money format
-     * @param $input
-     */
-    public function setCantidadAttribute($input)
-    {
-        $this->attributes['cantidad'] = $input ? $input : null;
-    }
-
-    /**
-     * Set attribute to money format
-     * @param $input
-     */
-    public function setPrecioAttribute($input)
-    {
-        $this->attributes['precio'] = $input ? $input : null;
-    }
-
-    /**
      * Set attribute to money format
      * @param $input
      */
@@ -128,11 +99,6 @@ class Factura extends Model
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'cliente_id')->withTrashed();
-    }
-    
-    public function producto()
-    {
-        return $this->belongsTo(Producto::class, 'producto_id')->withTrashed();
     }
     
 }

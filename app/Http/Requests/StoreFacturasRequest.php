@@ -28,8 +28,6 @@ class StoreFacturasRequest extends FormRequest
             'fecha' => 'required|date_format:'.config('app.date_format'),
             'cliente_id' => 'required',
             
-            'cantidad' => 'required',
-            'precio' => 'required',
             
             
             

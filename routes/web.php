@@ -23,10 +23,6 @@ $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
 Route::group(['middleware' => 'auth'], function () {
-
-    Route::get('itemsocs/create/{id}','ItemsocsController@agregarConID');
-    Route::get('clientes/create/{id}','ClientesController@crear');
-
     Route::get('/home', 'HomeController@index');
     Route::resource('roles', 'RolesController');
     Route::post('roles_mass_destroy', ['uses' => 'RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
@@ -62,4 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('itemsocs_mass_destroy', ['uses' => 'ItemsocsController@massDestroy', 'as' => 'itemsocs.mass_destroy']);
     Route::resource('recepcionmercaderias', 'RecepcionmercaderiasController');
     Route::post('recepcionmercaderias_mass_destroy', ['uses' => 'RecepcionmercaderiasController@massDestroy', 'as' => 'recepcionmercaderias.mass_destroy']);
+
+    Route::get('itemsocs/create/{id}','ItemsocsController@agregarConID');
+    Route::get('clientes/create/{id}','ClientesController@crear');
+    Route::get('facturas/create/{id}','FacturasController@crear');
 });

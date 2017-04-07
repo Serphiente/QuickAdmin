@@ -56,9 +56,7 @@
                         <th>@lang('quickadmin.facturas.fields.vendedor')</th>
                         <th>@lang('quickadmin.facturas.fields.fecha')</th>
                         <th>@lang('quickadmin.facturas.fields.cliente')</th>
-                        <th>@lang('quickadmin.facturas.fields.producto')</th>
-                        <th>@lang('quickadmin.facturas.fields.cantidad')</th>
-                        <th>@lang('quickadmin.facturas.fields.precio')</th>
+                        <th>@lang('quickadmin.facturas.fields.orden-compra')</th>
                         <th>@lang('quickadmin.facturas.fields.condicion-pago')</th>
                         <th>@lang('quickadmin.facturas.fields.estado-pago')</th>
                         <th>@lang('quickadmin.facturas.fields.documento-valido')</th>
@@ -74,9 +72,7 @@
                                 <td>{{ $factura->vendedor->name or '' }}</td>
                                 <td>{{ $factura->fecha }}</td>
                                 <td>{{ $factura->cliente->nombre or '' }}</td>
-                                <td>{{ $factura->producto->nombre or '' }}</td>
-                                <td>{{ $factura->cantidad }}</td>
-                                <td>{{ $factura->precio }}</td>
+                                <td>{{ $factura->orden_compra }}</td>
                                 <td>{{ $factura->condicion_pago }}</td>
                                 <td>{{ Form::checkbox("estado_pago", 1, $factura->estado_pago == 1, ["disabled"]) }}</td>
                                 <td>{{ Form::checkbox("documento_valido", 1, $factura->documento_valido == 1, ["disabled"]) }}</td>
@@ -101,7 +97,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="14">@lang('quickadmin.qa_no_entries_in_table')</td>
+                <td colspan="12">@lang('quickadmin.qa_no_entries_in_table')</td>
             </tr>
         @endif
     </tbody>

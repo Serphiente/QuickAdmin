@@ -23,9 +23,7 @@
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.vendedor'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.fecha'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.cliente'); ?></th>
-                        <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.producto'); ?></th>
-                        <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.cantidad'); ?></th>
-                        <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.precio'); ?></th>
+                        <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.orden-compra'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.condicion-pago'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.estado-pago'); ?></th>
                         <th><?php echo app('translator')->getFromJson('quickadmin.facturas.fields.documento-valido'); ?></th>
@@ -45,9 +43,7 @@
                                 <td><?php echo e(isset($factura->vendedor->name) ? $factura->vendedor->name : ''); ?></td>
                                 <td><?php echo e($factura->fecha); ?></td>
                                 <td><?php echo e(isset($factura->cliente->nombre) ? $factura->cliente->nombre : ''); ?></td>
-                                <td><?php echo e(isset($factura->producto->nombre) ? $factura->producto->nombre : ''); ?></td>
-                                <td><?php echo e($factura->cantidad); ?></td>
-                                <td><?php echo e($factura->precio); ?></td>
+                                <td><?php echo e($factura->orden_compra); ?></td>
                                 <td><?php echo e($factura->condicion_pago); ?></td>
                                 <td><?php echo e(Form::checkbox("estado_pago", 1, $factura->estado_pago == 1, ["disabled"])); ?></td>
                                 <td><?php echo e(Form::checkbox("documento_valido", 1, $factura->documento_valido == 1, ["disabled"])); ?></td>
@@ -75,7 +71,7 @@
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="14"><?php echo app('translator')->getFromJson('quickadmin.qa_no_entries_in_table'); ?></td>
+                            <td colspan="12"><?php echo app('translator')->getFromJson('quickadmin.qa_no_entries_in_table'); ?></td>
                         </tr>
                     <?php endif; ?>
                 </tbody>

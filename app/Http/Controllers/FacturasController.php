@@ -38,10 +38,42 @@ class FacturasController extends Controller
         $relations = [
             'vendedors' => \App\User::get()->pluck('name', 'id')->prepend('Please select', ''),
             'clientes' => \App\Cliente::get()->pluck('nombre', 'id')->prepend('Please select', ''),
-            'productos' => \App\Producto::get()->pluck('nombre', 'id')->prepend('Please select', ''),
         ];
 
         return view('facturas.create', $relations);
+    }
+
+     /**
+     * Show the form for creating new Factura.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+
+
+
+
+
+    public function crear($idoc)
+    
+    {
+        if (! Gate::allows('factura_create')) {
+            return abort(401);
+        }
+
+         $ticket="0E1DFD13-C558-47B7-9E29-A07D8632FCC0";
+          $consulta="http://api.mercadopublico.cl/servicios/v1/publico/ordenesdecompra.json?codigo=".$idoc."&ticket=".$ticket;
+           $ocs = file_get_contents($consulta);
+           $json = json_decode($ocs, true);
+
+        $relations = [
+            'vendedors' => \App\User::get()->pluck('name', 'id')->prepend('Please select', ''),
+            'clientes' => \App\Cliente::get()->pluck('nombre', 'id')->prepend('Please select', ''),
+            'json' => $json,
+        ];
+
+        return view('facturas.crear', $relations);
     }
 
     /**
@@ -75,7 +107,6 @@ class FacturasController extends Controller
         $relations = [
             'vendedors' => \App\User::get()->pluck('name', 'id')->prepend('Please select', ''),
             'clientes' => \App\Cliente::get()->pluck('nombre', 'id')->prepend('Please select', ''),
-            'productos' => \App\Producto::get()->pluck('nombre', 'id')->prepend('Please select', ''),
         ];
 
         $factura = Factura::findOrFail($id);
@@ -116,7 +147,6 @@ class FacturasController extends Controller
         $relations = [
             'vendedors' => \App\User::get()->pluck('name', 'id')->prepend('Please select', ''),
             'clientes' => \App\Cliente::get()->pluck('nombre', 'id')->prepend('Please select', ''),
-            'productos' => \App\Producto::get()->pluck('nombre', 'id')->prepend('Please select', ''),
         ];
 
         $factura = Factura::findOrFail($id);
