@@ -45,6 +45,9 @@
                             <td>{{ Form::checkbox("documento_valido", 1, $factura->documento_valido == 1, ["disabled"]) }}</td>
                         </tr>
                     </table>
+                     <br>
+            <a href="{{ route('itemsocs.create') }}/{{ $factura->folio }}"><button class="btn btn-primary">Agregar Item</button> </a>
+            <br><br>
                 </div>
             </div>
 

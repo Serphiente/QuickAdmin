@@ -196,7 +196,7 @@ return [
 	],
 	
 	'proveedoroc' => [
-		'title' => 'Datos OC',
+		'title' => 'Órdenes de Compra',
 		'created_at' => 'Time',
 		'fields' => [
 			'folio' => 'Folio',
